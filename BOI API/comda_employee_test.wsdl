@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://boi.sap.in/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://boi.org.il/HR_Comda" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://boi.sap.in/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://boi.sap.in/">
+      <s:import namespace="http://boi.org.il/HR_Comda" />
+      <s:element name="comda_mi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dt" type="s1:comda_req_dt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="comda_miResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="comda_miResult" type="tns:ArrayOfComda_res_dtEmpData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfComda_res_dtEmpData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="comda_res_dtEmpData" nillable="true" type="s1:comda_res_dtEmpData" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://boi.org.il/HR_Comda">
+      <s:complexType name="comda_req_dt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="IDNum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="comda_res_dtEmpData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="IdNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EmpNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FIRST_NAME_ENG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LAST_NAME_ENG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="HierDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FireDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EmpType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CardNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="IMAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="UPN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PHONE_NUMBER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="StatusDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="comda_miSoapIn">
+    <wsdl:part name="parameters" element="tns:comda_mi" />
+  </wsdl:message>
+  <wsdl:message name="comda_miSoapOut">
+    <wsdl:part name="parameters" element="tns:comda_miResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SAP_INSoap">
+    <wsdl:operation name="comda_mi">
+      <wsdl:input message="tns:comda_miSoapIn" />
+      <wsdl:output message="tns:comda_miSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SAP_INSoap" type="tns:SAP_INSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="comda_mi">
+      <soap:operation soapAction="http://boi.sap.in/comda_mi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SAP_INSoap12" type="tns:SAP_INSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="comda_mi">
+      <soap12:operation soapAction="http://boi.sap.in/comda_mi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SAP_IN">
+    <wsdl:port name="SAP_INSoap" binding="tns:SAP_INSoap">
+      <soap:address location="http://localhost:14363/SAP_IN.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SAP_INSoap12" binding="tns:SAP_INSoap12">
+      <soap12:address location="http://localhost:14363/SAP_IN.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

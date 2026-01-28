@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="comda_pic_mi" targetNamespace="http://boi.org.il/HR_Comda_pic" xmlns:p2="http://boi.org.il/HR_Polimil_Pic" xmlns:p1="http://boi.org.il/HR_Comda_pic" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation/>
+  <wsp:UsingPolicy wsdl:required="true"/>
+  <wsp:Policy wsu:Id="OP_poli_pic_mi"/>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://boi.org.il/HR_Polimil_Pic" xmlns="http://boi.org.il/HR_Polimil_Pic" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="comda_pic_req_mt" type="poli_pic_req_dt"/>
+      <xsd:element name="poli_pic_res_mt" type="poli_pic_res_dt"/>
+      <xsd:complexType name="poli_pic_req_dt">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">e8d45e1b65bb11e0bcdc00001214f6a6</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="IDNum" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">637cac4465bc11e0943100016c55100f</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CardNum" type="xsd:string"/>
+          <xsd:element name="Picture" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="poli_pic_res_dt">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">ee2f7858668211e0c43800001214f6a6</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="ReturnMessage" minOccurs="0" maxOccurs="unbounded">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="Type" type="xsd:string"/>
+                <xsd:element name="Message" type="xsd:string"/>
+                <xsd:element name="Number" type="xsd:string"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="comda_pic_req_mt">
+    <wsdl:documentation/>
+    <wsdl:part name="comda_pic_req_mt" element="p2:comda_pic_req_mt"/>
+  </wsdl:message>
+  <wsdl:message name="p2.poli_pic_res_mt">
+    <wsdl:documentation/>
+    <wsdl:part name="poli_pic_res_mt" element="p2:poli_pic_res_mt"/>
+  </wsdl:message>
+  <wsdl:portType name="comda_pic_mi">
+    <wsdl:documentation/>
+    <wsdl:operation name="poli_pic_mi">
+      <wsdl:documentation/>
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_poli_pic_mi"/>
+      </wsp:Policy>
+      <wsdl:input message="p1:comda_pic_req_mt"/>
+      <wsdl:output message="p1:p2.poli_pic_res_mt"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="comda_pic_miBinding" type="p1:comda_pic_mi">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+    <wsdl:operation name="poli_pic_mi">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      <wsdl:input>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="comda_pic_miService">
+    <wsdl:port name="HTTP_Port" binding="p1:comda_pic_miBinding">
+      <soap:address location="http://sapwaexq.ad.boi.gov.il:50000/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=BankIsrael_QA&amp;receiverParty=&amp;receiverService=&amp;interface=comda_pic_mi&amp;interfaceNamespace=http%3A%2F%2Fboi.org.il%2FHR_Comda_pic" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+    </wsdl:port>
+    <wsdl:port name="HTTPS_Port" binding="p1:comda_pic_miBinding">
+      <soap:address location="https://sapwaexq.ad.boi.gov.il:50001/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=BankIsrael_QA&amp;receiverParty=&amp;receiverService=&amp;interface=comda_pic_mi&amp;interfaceNamespace=http%3A%2F%2Fboi.org.il%2FHR_Comda_pic" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetADUserGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loginUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="group_in" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetADUserGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetADUserGroupsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExtractUserName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="path" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExtractUserNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExtractUserNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_eamil_addres_by_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loginName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_eamil_addres_by_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_eamil_addres_by_userResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistInAD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loginName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsExistInADResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsExistInADResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_full_name_by_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_full_name_by_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_full_name_by_userResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_telephone_by_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_telephone_by_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_telephone_by_userResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserPropertiesResult" type="tns:UserPropLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserPropLong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="userFullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGroupMembers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupMembersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupMembersResult" type="tns:ArrayOfUserPropShort" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserPropShort">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserPropShort" nillable="true" type="tns:UserPropShort" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserPropShort">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="userFullName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="From" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="To" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isHTML" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="toNumbers" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendSMSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="UserPropLong" nillable="true" type="tns:UserPropLong" />
+      <s:element name="ArrayOfUserPropShort" nillable="true" type="tns:ArrayOfUserPropShort" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetADUserGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetADUserGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetADUserGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetADUserGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExtractUserNameSoapIn">
+    <wsdl:part name="parameters" element="tns:ExtractUserName" />
+  </wsdl:message>
+  <wsdl:message name="ExtractUserNameSoapOut">
+    <wsdl:part name="parameters" element="tns:ExtractUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_eamil_addres_by_userSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_eamil_addres_by_user" />
+  </wsdl:message>
+  <wsdl:message name="Get_eamil_addres_by_userSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_eamil_addres_by_userResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsExistInADSoapIn">
+    <wsdl:part name="parameters" element="tns:IsExistInAD" />
+  </wsdl:message>
+  <wsdl:message name="IsExistInADSoapOut">
+    <wsdl:part name="parameters" element="tns:IsExistInADResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_full_name_by_userSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_full_name_by_user" />
+  </wsdl:message>
+  <wsdl:message name="Get_full_name_by_userSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_full_name_by_userResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_telephone_by_userSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_telephone_by_user" />
+  </wsdl:message>
+  <wsdl:message name="Get_telephone_by_userSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_telephone_by_userResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompany" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserProperties" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMembersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupMembers" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMembersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMail" />
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMS" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetADUserGroupsHttpGetIn">
+    <wsdl:part name="loginUser" type="s:string" />
+    <wsdl:part name="group_in" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetADUserGroupsHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ExtractUserNameHttpGetIn">
+    <wsdl:part name="path" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExtractUserNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_eamil_addres_by_userHttpGetIn">
+    <wsdl:part name="loginName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_eamil_addres_by_userHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistInADHttpGetIn">
+    <wsdl:part name="loginName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistInADHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="Get_full_name_by_userHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_full_name_by_userHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_telephone_by_userHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_telephone_by_userHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPropertiesHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPropertiesHttpGetOut">
+    <wsdl:part name="Body" element="tns:UserPropLong" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMembersHttpGetIn">
+    <wsdl:part name="groupName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMembersHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUserPropShort" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpGetIn">
+    <wsdl:part name="From" type="s:string" />
+    <wsdl:part name="To" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="Body" type="s:string" />
+    <wsdl:part name="isHTML" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSHttpGetIn">
+    <wsdl:part name="toNumbers" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetADUserGroupsHttpPostIn">
+    <wsdl:part name="loginUser" type="s:string" />
+    <wsdl:part name="group_in" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetADUserGroupsHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ExtractUserNameHttpPostIn">
+    <wsdl:part name="path" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExtractUserNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_eamil_addres_by_userHttpPostIn">
+    <wsdl:part name="loginName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_eamil_addres_by_userHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistInADHttpPostIn">
+    <wsdl:part name="loginName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsExistInADHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="Get_full_name_by_userHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_full_name_by_userHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_telephone_by_userHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_telephone_by_userHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPropertiesHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPropertiesHttpPostOut">
+    <wsdl:part name="Body" element="tns:UserPropLong" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMembersHttpPostIn">
+    <wsdl:part name="groupName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMembersHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUserPropShort" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpPostIn">
+    <wsdl:part name="From" type="s:string" />
+    <wsdl:part name="To" type="s:string" />
+    <wsdl:part name="Subject" type="s:string" />
+    <wsdl:part name="Body" type="s:string" />
+    <wsdl:part name="isHTML" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSHttpPostIn">
+    <wsdl:part name="toNumbers" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="GetADUserGroups">
+      <wsdl:input message="tns:GetADUserGroupsSoapIn" />
+      <wsdl:output message="tns:GetADUserGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExtractUserName">
+      <wsdl:input message="tns:ExtractUserNameSoapIn" />
+      <wsdl:output message="tns:ExtractUserNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_eamil_addres_by_user">
+      <wsdl:input message="tns:Get_eamil_addres_by_userSoapIn" />
+      <wsdl:output message="tns:Get_eamil_addres_by_userSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistInAD">
+      <wsdl:input message="tns:IsExistInADSoapIn" />
+      <wsdl:output message="tns:IsExistInADSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_full_name_by_user">
+      <wsdl:input message="tns:Get_full_name_by_userSoapIn" />
+      <wsdl:output message="tns:Get_full_name_by_userSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_telephone_by_user">
+      <wsdl:input message="tns:Get_telephone_by_userSoapIn" />
+      <wsdl:output message="tns:Get_telephone_by_userSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <wsdl:input message="tns:GetCompanySoapIn" />
+      <wsdl:output message="tns:GetCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProperties">
+      <wsdl:input message="tns:GetUserPropertiesSoapIn" />
+      <wsdl:output message="tns:GetUserPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembers">
+      <wsdl:input message="tns:GetGroupMembersSoapIn" />
+      <wsdl:output message="tns:GetGroupMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:input message="tns:SendMailSoapIn" />
+      <wsdl:output message="tns:SendMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <wsdl:input message="tns:SendSMSSoapIn" />
+      <wsdl:output message="tns:SendSMSSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Service1HttpGet">
+    <wsdl:operation name="GetADUserGroups">
+      <wsdl:input message="tns:GetADUserGroupsHttpGetIn" />
+      <wsdl:output message="tns:GetADUserGroupsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExtractUserName">
+      <wsdl:input message="tns:ExtractUserNameHttpGetIn" />
+      <wsdl:output message="tns:ExtractUserNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_eamil_addres_by_user">
+      <wsdl:input message="tns:Get_eamil_addres_by_userHttpGetIn" />
+      <wsdl:output message="tns:Get_eamil_addres_by_userHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistInAD">
+      <wsdl:input message="tns:IsExistInADHttpGetIn" />
+      <wsdl:output message="tns:IsExistInADHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_full_name_by_user">
+      <wsdl:input message="tns:Get_full_name_by_userHttpGetIn" />
+      <wsdl:output message="tns:Get_full_name_by_userHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_telephone_by_user">
+      <wsdl:input message="tns:Get_telephone_by_userHttpGetIn" />
+      <wsdl:output message="tns:Get_telephone_by_userHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <wsdl:input message="tns:GetCompanyHttpGetIn" />
+      <wsdl:output message="tns:GetCompanyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProperties">
+      <wsdl:input message="tns:GetUserPropertiesHttpGetIn" />
+      <wsdl:output message="tns:GetUserPropertiesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembers">
+      <wsdl:input message="tns:GetGroupMembersHttpGetIn" />
+      <wsdl:output message="tns:GetGroupMembersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:input message="tns:SendMailHttpGetIn" />
+      <wsdl:output message="tns:SendMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <wsdl:input message="tns:SendSMSHttpGetIn" />
+      <wsdl:output message="tns:SendSMSHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Service1HttpPost">
+    <wsdl:operation name="GetADUserGroups">
+      <wsdl:input message="tns:GetADUserGroupsHttpPostIn" />
+      <wsdl:output message="tns:GetADUserGroupsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExtractUserName">
+      <wsdl:input message="tns:ExtractUserNameHttpPostIn" />
+      <wsdl:output message="tns:ExtractUserNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_eamil_addres_by_user">
+      <wsdl:input message="tns:Get_eamil_addres_by_userHttpPostIn" />
+      <wsdl:output message="tns:Get_eamil_addres_by_userHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistInAD">
+      <wsdl:input message="tns:IsExistInADHttpPostIn" />
+      <wsdl:output message="tns:IsExistInADHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_full_name_by_user">
+      <wsdl:input message="tns:Get_full_name_by_userHttpPostIn" />
+      <wsdl:output message="tns:Get_full_name_by_userHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_telephone_by_user">
+      <wsdl:input message="tns:Get_telephone_by_userHttpPostIn" />
+      <wsdl:output message="tns:Get_telephone_by_userHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <wsdl:input message="tns:GetCompanyHttpPostIn" />
+      <wsdl:output message="tns:GetCompanyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProperties">
+      <wsdl:input message="tns:GetUserPropertiesHttpPostIn" />
+      <wsdl:output message="tns:GetUserPropertiesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembers">
+      <wsdl:input message="tns:GetGroupMembersHttpPostIn" />
+      <wsdl:output message="tns:GetGroupMembersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:input message="tns:SendMailHttpPostIn" />
+      <wsdl:output message="tns:SendMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <wsdl:input message="tns:SendSMSHttpPostIn" />
+      <wsdl:output message="tns:SendSMSHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetADUserGroups">
+      <soap:operation soapAction="http://tempuri.org/GetADUserGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtractUserName">
+      <soap:operation soapAction="http://tempuri.org/ExtractUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_eamil_addres_by_user">
+      <soap:operation soapAction="http://tempuri.org/Get_eamil_addres_by_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistInAD">
+      <soap:operation soapAction="http://tempuri.org/IsExistInAD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_full_name_by_user">
+      <soap:operation soapAction="http://tempuri.org/Get_full_name_by_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_telephone_by_user">
+      <soap:operation soapAction="http://tempuri.org/Get_telephone_by_user" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <soap:operation soapAction="http://tempuri.org/GetCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProperties">
+      <soap:operation soapAction="http://tempuri.org/GetUserProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembers">
+      <soap:operation soapAction="http://tempuri.org/GetGroupMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap:operation soapAction="http://tempuri.org/SendMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://tempuri.org/SendSMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetADUserGroups">
+      <soap12:operation soapAction="http://tempuri.org/GetADUserGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtractUserName">
+      <soap12:operation soapAction="http://tempuri.org/ExtractUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_eamil_addres_by_user">
+      <soap12:operation soapAction="http://tempuri.org/Get_eamil_addres_by_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistInAD">
+      <soap12:operation soapAction="http://tempuri.org/IsExistInAD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_full_name_by_user">
+      <soap12:operation soapAction="http://tempuri.org/Get_full_name_by_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_telephone_by_user">
+      <soap12:operation soapAction="http://tempuri.org/Get_telephone_by_user" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <soap12:operation soapAction="http://tempuri.org/GetCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProperties">
+      <soap12:operation soapAction="http://tempuri.org/GetUserProperties" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembers">
+      <soap12:operation soapAction="http://tempuri.org/GetGroupMembers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap12:operation soapAction="http://tempuri.org/SendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap12:operation soapAction="http://tempuri.org/SendSMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1HttpGet" type="tns:Service1HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetADUserGroups">
+      <http:operation location="/GetADUserGroups" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtractUserName">
+      <http:operation location="/ExtractUserName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_eamil_addres_by_user">
+      <http:operation location="/Get_eamil_addres_by_user" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistInAD">
+      <http:operation location="/IsExistInAD" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_full_name_by_user">
+      <http:operation location="/Get_full_name_by_user" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_telephone_by_user">
+      <http:operation location="/Get_telephone_by_user" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <http:operation location="/GetCompany" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProperties">
+      <http:operation location="/GetUserProperties" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembers">
+      <http:operation location="/GetGroupMembers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <http:operation location="/SendMail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <http:operation location="/SendSMS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1HttpPost" type="tns:Service1HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetADUserGroups">
+      <http:operation location="/GetADUserGroups" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExtractUserName">
+      <http:operation location="/ExtractUserName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_eamil_addres_by_user">
+      <http:operation location="/Get_eamil_addres_by_user" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistInAD">
+      <http:operation location="/IsExistInAD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_full_name_by_user">
+      <http:operation location="/Get_full_name_by_user" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_telephone_by_user">
+      <http:operation location="/Get_telephone_by_user" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompany">
+      <http:operation location="/GetCompany" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProperties">
+      <http:operation location="/GetUserProperties" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMembers">
+      <http:operation location="/GetGroupMembers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <http:operation location="/SendMail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <http:operation location="/SendSMS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://iiscrtprd/shvakim/GeneralServices/service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://iiscrtprd/shvakim/GeneralServices/service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1HttpGet" binding="tns:Service1HttpGet">
+      <http:address location="http://iiscrtprd/shvakim/GeneralServices/service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1HttpPost" binding="tns:Service1HttpPost">
+      <http:address location="http://iiscrtprd/shvakim/GeneralServices/service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
