@@ -1,5 +1,3 @@
-using CcmsBankIsraelProxy.Models;
-
 namespace CcmsBankIsraelProxy.Services;
 
 /// <summary>
@@ -7,8 +5,5 @@ namespace CcmsBankIsraelProxy.Services;
 /// </summary>
 public interface IPictureService
 {
-    /// <summary>
-    /// Updates employee picture in SAP
-    /// </summary>
-    Task<(bool success, string message)> UpdatePictureAsync(PictureUpdateRequest request);
+    Task<(bool success, string message)> UpdatePictureAsync(string idNum, string cardNum, string pictureBase64);
 }

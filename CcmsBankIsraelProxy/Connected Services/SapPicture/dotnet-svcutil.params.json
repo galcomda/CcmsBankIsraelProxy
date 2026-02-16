@@ -1,0 +1,29 @@
+{
+  "providerId": "Microsoft.Tools.ServiceModel.Svcutil",
+  "version": "8.0.0",
+  "options": {
+    "inputs": [
+      "../../../BOI API/comda_pic.wsdl"
+    ],
+    "namespaceMappings": [
+      "*, CcmsBankIsraelProxy.SoapClients.SapPicture"
+    ],
+    "outputFile": "Reference.cs",
+    "references": [
+      "Microsoft.Extensions.Configuration.Abstractions, {Microsoft.Extensions.Configuration.Abstractions, 8.0.0}",
+      "Microsoft.Extensions.DependencyInjection, {Microsoft.Extensions.DependencyInjection, 8.0.0}",
+      "Microsoft.Extensions.DependencyInjection.Abstractions, {Microsoft.Extensions.DependencyInjection.Abstractions, 8.0.0}",
+      "Microsoft.Extensions.Logging, {Microsoft.Extensions.Logging, 8.0.0}",
+      "Microsoft.Extensions.Logging.Abstractions, {Microsoft.Extensions.Logging.Abstractions, 8.0.0}",
+      "Microsoft.Extensions.Options, {Microsoft.Extensions.Options, 8.0.0}",
+      "Microsoft.Extensions.Primitives, {Microsoft.Extensions.Primitives, 8.0.0}",
+      "Newtonsoft.Json, {Newtonsoft.Json, 13.0.3}",
+      "NLog, {NLog, 5.3.4}",
+      "NLog.Extensions.Logging, {NLog.Extensions.Logging, 5.3.13}",
+      "NLog.Web.AspNetCore, {NLog.Web.AspNetCore, 5.3.14}"
+    ],
+    "sync": true,
+    "targetFramework": "net8.0",
+    "typeReuseMode": "All"
+  }
+}
